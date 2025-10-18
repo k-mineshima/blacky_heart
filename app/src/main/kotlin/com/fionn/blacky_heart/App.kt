@@ -4,12 +4,13 @@
 package com.fionn.blacky_heart
 
 class App {
-    val greeting: String
-        get() {
-            return "Hello World!"
-        }
+    fun run() {
+        val blackyHeart = BlackyHeart()
+
+        blackyHeart.start()
+    }
 }
 
 fun main() {
-    println(App().greeting)
+    App().run()
 }
