@@ -6,3 +6,7 @@ build
 
 # ignore intellij idea project
 .idea
+
+# configuration
+application*.json
+!application-sample.json
