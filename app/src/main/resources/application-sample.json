@@ -1,0 +1,22 @@
+{
+  "discordbot": {
+    "token": "MTIzMjM3NTksampleMzk1NTUyNw.GaJt6U.zsamplerzs7YTx3BP0UYxaiJQIUw_bU3SaMpleZY",
+    "default-prefix": "!",
+    "owner-id": "763057879057170432",
+    "emojis": {
+      "success": ":thumbsup:",
+      "warning": ":exclamation:",
+      "error": ":x:"
+    }
+  },
+  "database": {
+    "vendor": "mysql",
+    "driver": "com.mysql.cj.jdbc.Driver",
+    "host": "localhost",
+    "port": 3306,
+    "database-name": "blacky_heart",
+    "user": "fionn",
+    "password": "fionn_admin",
+    "pool-size": 10
+  }
+}
