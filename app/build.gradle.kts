@@ -32,6 +32,12 @@ dependencies {
     implementation(libs.guava)
     implementation(libs.jda)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.mysql.connector.java)
+    implementation(libs.hikaricp)
+    implementation(libs.exposed.core)
+    implementation(libs.exposed.dao)
+    implementation(libs.exposed.jdbc)
+    implementation(libs.exposed.kotlin.datetime)
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
