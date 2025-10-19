@@ -1,6 +1,7 @@
 package com.fionn.blacky_heart
 
 import com.fionn.blacky_heart.app.listeners.GuildJoinListener
+import com.fionn.blacky_heart.app.listeners.GuildLeaveListener
 import com.fionn.blacky_heart.config.Configuration
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -19,7 +20,10 @@ class BlackyHeart(
     fun start() {
         val jda: JDA = JDABuilder.createDefault(this.config.discordbot.token)
                                  .enableIntents(GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_VOICE_STATES)
-                                 .addEventListeners(GuildJoinListener(this.config.discordbot.defaultPrefix))
+                                 .addEventListeners(
+                                     GuildJoinListener(this.config.discordbot.defaultPrefix),
+                                     GuildLeaveListener(),
+                                 )
                                  .build()
     }
 
