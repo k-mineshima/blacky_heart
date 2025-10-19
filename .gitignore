@@ -10,3 +10,6 @@ build
 # configuration
 application*.json
 !application-sample.json
+
+# logging
+app/logs
