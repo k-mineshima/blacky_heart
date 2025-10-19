@@ -38,6 +38,8 @@ dependencies {
     implementation(libs.exposed.dao)
     implementation(libs.exposed.jdbc)
     implementation(libs.exposed.kotlin.datetime)
+    implementation(libs.log4j.slf4j2.impl)
+    runtimeOnly(libs.jackson.dataformat.yaml)
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

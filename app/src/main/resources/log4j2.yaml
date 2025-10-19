@@ -1,0 +1,16 @@
+Configuration:
+  Properties:
+    property:
+      - name: "console_format"
+        value: "%highlight{%d{yyyy-MM-dd HH:mm:ss.SSS}{GMT+9} %-5level %c - %m%n}"
+  Appenders:
+    Console:
+      name: "console"
+      target: "SYSTEM_OUT"
+      PatternLayout:
+        pattern: "${console_format}"
+  Loggers:
+    Root:
+      level: "debug"
+      AppenderRef:
+        - ref: "console"
