@@ -3,12 +3,13 @@
  */
 package com.fionn.blacky_heart
 
+import kotlin.reflect.full.declaredFunctions
+import kotlin.test.DefaultAsserter.assertTrue
 import kotlin.test.Test
-import kotlin.test.assertNotNull
 
 class AppTest {
-    @Test fun appHasAGreeting() {
-        val classUnderTest = App()
-        assertNotNull(classUnderTest.greeting, "app should have a greeting")
+    @Test fun hasRunMethod() {
+        val methodNames: List<String> = App::class.declaredFunctions.map { it.name }
+        assertTrue("Method 'run' does not exist", methodNames.contains("run"))
     }
 }
