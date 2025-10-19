@@ -9,9 +9,16 @@ plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.flyway)
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+}
+
+buildscript {
+    dependencies {
+        classpath(libs.flyway.mysql)
+    }
 }
 
 repositories {
@@ -57,4 +64,10 @@ application {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+flyway {
+    url = System.getenv("BLACKY_HEART_FLYWAY_URL")
+    user = System.getenv("BLACKY_HEART_FLYWAY_USER")
+    password = System.getenv("BLACKY_HEART_FLYWAY_PASSWORD")
 }
