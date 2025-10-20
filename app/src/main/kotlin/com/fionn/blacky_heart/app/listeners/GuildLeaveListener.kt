@@ -1,6 +1,6 @@
 package com.fionn.blacky_heart.app.listeners
 
-import com.fionn.blacky_heart.app.entities.Guild
+import com.fionn.blacky_heart.app.entities.GuildEntity
 import net.dv8tion.jda.api.events.guild.GuildLeaveEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction
@@ -12,7 +12,7 @@ private val logger: Logger = LoggerFactory.getLogger(GuildLeaveListener::class.j
 class GuildLeaveListener: ListenerAdapter() {
     override fun onGuildLeave(event: GuildLeaveEvent) {
         transaction {
-            Guild.findByGuildId(event.guild.idLong)?.delete() ?: logger.warn("could not delete guild: guild_id = ${event.guild.idLong}")
+            GuildEntity.findByGuildId(event.guild.idLong)?.delete() ?: logger.warn("could not delete guild: guild_id = ${event.guild.idLong}")
         }
     }
 }
