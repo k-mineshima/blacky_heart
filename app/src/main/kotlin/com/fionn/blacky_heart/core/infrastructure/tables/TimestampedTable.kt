@@ -1,4 +1,4 @@
-package com.fionn.blacky_heart.app.entities.tables
+package com.fionn.blacky_heart.core.infrastructure.tables
 
 import com.fionn.blacky_heart.lib.now
 import kotlinx.datetime.LocalDateTime
