@@ -1,7 +1,7 @@
 package com.fionn.blacky_heart
 
-import com.fionn.blacky_heart.app.listeners.GuildJoinListener
-import com.fionn.blacky_heart.app.listeners.GuildLeaveListener
+import com.fionn.blacky_heart.core.presentation.listeners.GuildJoinListener
+import com.fionn.blacky_heart.core.presentation.listeners.GuildLeaveListener
 import com.fionn.blacky_heart.config.Configuration
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -11,7 +11,9 @@ import net.dv8tion.jda.api.requests.GatewayIntent
 import org.jetbrains.exposed.v1.jdbc.Database
 
 class BlackyHeart(
-    private val config: Configuration = Configuration.load()
+    private val config: Configuration,
+    private val guildJoinListener: GuildJoinListener,
+    private val guildLeaveListener: GuildLeaveListener,
 ) {
     init {
         this.connectDatabase()
@@ -21,8 +23,8 @@ class BlackyHeart(
         val jda: JDA = JDABuilder.createDefault(this.config.discordbot.token)
                                  .enableIntents(GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_VOICE_STATES)
                                  .addEventListeners(
-                                     GuildJoinListener(this.config.discordbot.defaultPrefix),
-                                     GuildLeaveListener(),
+                                     guildJoinListener,
+                                     guildLeaveListener,
                                  )
                                  .build()
     }

@@ -1,4 +1,4 @@
-package com.fionn.blacky_heart.app.entities.tables
+package com.fionn.blacky_heart.core.infrastructure.tables
 
 import org.jetbrains.exposed.v1.core.Column
 

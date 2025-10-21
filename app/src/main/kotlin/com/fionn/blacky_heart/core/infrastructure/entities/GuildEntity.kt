@@ -1,6 +1,6 @@
-package com.fionn.blacky_heart.app.entities
+package com.fionn.blacky_heart.core.infrastructure.entities
 
-import com.fionn.blacky_heart.app.entities.tables.GuildsTable
+import com.fionn.blacky_heart.core.infrastructure.tables.GuildsTable
 import org.jetbrains.exposed.v1.core.dao.id.EntityID
 import org.jetbrains.exposed.v1.core.eq
 import org.jetbrains.exposed.v1.dao.LongEntityClass

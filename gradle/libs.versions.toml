@@ -13,6 +13,7 @@ exposed = "1.0.0-rc-2"
 log4j-slf4j2-impl = "2.25.2"
 jackson-dataformat-yaml = "2.20.0"
 flyway = "11.14.1"
+kodein-di = "7.28.0"
 
 [libraries]
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
@@ -28,6 +29,7 @@ exposed-kotlin-datetime = { module = "org.jetbrains.exposed:exposed-kotlin-datet
 log4j-slf4j2-impl = { module = "org.apache.logging.log4j:log4j-slf4j2-impl", version.ref = "log4j-slf4j2-impl" }
 jackson-dataformat-yaml = { module = "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml", version.ref = "jackson-dataformat-yaml" }
 flyway-mysql = { module = "org.flywaydb:flyway-mysql", version.ref = "flyway" }
+kodein-di = { module = "org.kodein.di:kodein-di", version.ref = "kodein-di" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

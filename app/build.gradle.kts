@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.exposed.kotlin.datetime)
     implementation(libs.log4j.slf4j2.impl)
     runtimeOnly(libs.jackson.dataformat.yaml)
+    implementation(libs.kodein.di)
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
