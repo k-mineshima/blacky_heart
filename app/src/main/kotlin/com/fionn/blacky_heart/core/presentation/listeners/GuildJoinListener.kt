@@ -11,9 +11,10 @@ class GuildJoinListener(
     override fun onGuildJoin(event: GuildJoinEvent) {
         this.guildRegisterService.execute(
             GuildDto(
-                event.guild.idLong,
-                event.guild.name,
-                event.guild.systemChannel?.idLong)
+                id = event.guild.idLong,
+                name = event.guild.name,
+                systemChannelId = event.guild.systemChannel?.idLong
+            )
         )
     }
 }

@@ -15,10 +15,10 @@ class GuildRegisterService(
         this.transactionScope.transaction {
             this.guildRepository.save(
                 Guild(
-                    guild.id,
-                    guild.name,
-                    this.config.discordbot.defaultPrefix,
-                    guild.systemChannelId,
+                    id = guild.id,
+                    name = guild.name,
+                    prefix = this.config.discordbot.defaultPrefix,
+                    primaryChannelId = guild.systemChannelId,
                 )
             )
         }
