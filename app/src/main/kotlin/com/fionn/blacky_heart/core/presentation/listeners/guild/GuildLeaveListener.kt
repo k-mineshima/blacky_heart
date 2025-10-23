@@ -1,4 +1,4 @@
-package com.fionn.blacky_heart.core.presentation.listeners
+package com.fionn.blacky_heart.core.presentation.listeners.guild
 
 import com.fionn.blacky_heart.core.application.dtos.GuildDto
 import com.fionn.blacky_heart.core.application.services.GuildDeleteService
