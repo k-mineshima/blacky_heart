@@ -7,13 +7,15 @@ import com.fionn.blacky_heart.config.Configuration
 import com.fionn.blacky_heart.core.application.services.GuildDeleteService
 import com.fionn.blacky_heart.core.application.services.GuildRegisterService
 import com.fionn.blacky_heart.core.application.services.GuildSyncService
+import com.fionn.blacky_heart.core.application.services.GuildUpdateNameService
 import com.fionn.blacky_heart.core.application.transaction.TransactionScope
 import com.fionn.blacky_heart.core.domain.repositories.GuildRepository
 import com.fionn.blacky_heart.core.infrastructure.repositories.GuildRepositoryImpl
 import com.fionn.blacky_heart.core.infrastructure.transaction.TransactionScopeImpl
-import com.fionn.blacky_heart.core.presentation.listeners.GuildJoinListener
-import com.fionn.blacky_heart.core.presentation.listeners.GuildLeaveListener
+import com.fionn.blacky_heart.core.presentation.listeners.guild.GuildJoinListener
+import com.fionn.blacky_heart.core.presentation.listeners.guild.GuildLeaveListener
 import com.fionn.blacky_heart.core.presentation.listeners.ReadyListener
+import com.fionn.blacky_heart.core.presentation.listeners.guild.GuildUpdateNameListener
 import org.kodein.di.DI
 import org.kodein.di.bind
 import org.kodein.di.instance
@@ -27,6 +29,7 @@ class App {
                 instance(),
                 instance(),
                 instance(),
+                instance(),
             )
         }
         bind<Configuration>() with singleton { Configuration.load() }
@@ -34,9 +37,11 @@ class App {
         bind<ReadyListener>() with singleton { ReadyListener(instance()) }
         bind<GuildJoinListener>() with singleton { GuildJoinListener(instance()) }
         bind<GuildLeaveListener>() with singleton { GuildLeaveListener(instance()) }
+        bind<GuildUpdateNameListener>() with singleton { GuildUpdateNameListener(instance()) }
         bind<GuildRegisterService>() with singleton { GuildRegisterService(instance(), instance(), instance()) }
         bind<GuildDeleteService>() with singleton { GuildDeleteService(instance(), instance()) }
         bind<GuildSyncService>() with singleton { GuildSyncService(instance(), instance(), instance()) }
+        bind<GuildUpdateNameService>() with singleton { GuildUpdateNameService(instance(), instance()) }
         bind<GuildRepository>() with singleton { GuildRepositoryImpl() }
     }
 

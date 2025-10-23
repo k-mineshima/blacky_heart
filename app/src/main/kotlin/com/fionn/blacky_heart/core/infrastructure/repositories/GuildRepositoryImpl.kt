@@ -49,6 +49,12 @@ class GuildRepositoryImpl: GuildRepository {
         }
     }
 
+    override fun updateName(id: Long, name: String) {
+        GuildsTable.update({ GuildsTable.guildId eq id }) {
+            it[GuildsTable.name] = name
+        }
+    }
+
     override fun delete(guildId: Long): Boolean {
         return GuildsTable.deleteWhere { GuildsTable.guildId eq guildId } > 0
     }

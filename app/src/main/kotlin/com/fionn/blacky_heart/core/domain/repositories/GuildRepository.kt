@@ -11,6 +11,8 @@ interface GuildRepository {
 
     fun update(guild: Guild)
 
+    fun updateName(guildId: Long, name: String)
+
     fun delete(guildId: Long): Boolean
 
     fun delete(guildIds: Collection<Long>): Int

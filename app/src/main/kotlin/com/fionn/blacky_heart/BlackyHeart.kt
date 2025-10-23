@@ -1,9 +1,10 @@
 package com.fionn.blacky_heart
 
-import com.fionn.blacky_heart.core.presentation.listeners.GuildJoinListener
-import com.fionn.blacky_heart.core.presentation.listeners.GuildLeaveListener
+import com.fionn.blacky_heart.core.presentation.listeners.guild.GuildJoinListener
+import com.fionn.blacky_heart.core.presentation.listeners.guild.GuildLeaveListener
 import com.fionn.blacky_heart.config.Configuration
 import com.fionn.blacky_heart.core.presentation.listeners.ReadyListener
+import com.fionn.blacky_heart.core.presentation.listeners.guild.GuildUpdateNameListener
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import net.dv8tion.jda.api.JDA
@@ -16,6 +17,7 @@ class BlackyHeart(
     private val readyListener: ReadyListener,
     private val guildJoinListener: GuildJoinListener,
     private val guildLeaveListener: GuildLeaveListener,
+    private val guildUpdateNameListener: GuildUpdateNameListener,
 ) {
     init {
         this.connectDatabase()
@@ -28,6 +30,7 @@ class BlackyHeart(
                                      readyListener,
                                      guildJoinListener,
                                      guildLeaveListener,
+                                     guildUpdateNameListener,
                                  )
                                  .build()
     }
