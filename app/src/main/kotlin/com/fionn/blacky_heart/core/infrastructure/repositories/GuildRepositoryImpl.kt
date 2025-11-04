@@ -23,6 +23,19 @@ class GuildRepositoryImpl: GuildRepository {
         }
     }
 
+    override fun getByGuildId(guildId: Long): Guild? =
+        GuildEntity
+            .find { GuildsTable.guildId eq guildId }
+            .map {
+                Guild(
+                    id = it.guildId,
+                    name = it.name,
+                    prefix = it.prefix,
+                    primaryChannelId = it.primaryChannelId,
+                )
+            }
+            .singleOrNull()
+
     override fun save(guild: Guild) {
         GuildEntity.new {
             this.guildId = guild.id

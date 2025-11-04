@@ -1,38 +1,35 @@
 package com.fionn.blacky_heart
 
+import com.fionn.blacky_heart.config.Configuration
 import com.fionn.blacky_heart.core.presentation.listeners.guild.GuildJoinListener
 import com.fionn.blacky_heart.core.presentation.listeners.guild.GuildLeaveListener
-import com.fionn.blacky_heart.config.Configuration
-import com.fionn.blacky_heart.core.presentation.listeners.ReadyListener
 import com.fionn.blacky_heart.core.presentation.listeners.guild.GuildUpdateNameListener
+import com.fionn.blacky_heart.core.presentation.listeners.guild.GuildVoiceUpdateListener
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import net.dv8tion.jda.api.JDA
-import net.dv8tion.jda.api.JDABuilder
-import net.dv8tion.jda.api.requests.GatewayIntent
 import org.jetbrains.exposed.v1.jdbc.Database
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 class BlackyHeart(
     private val config: Configuration,
-    private val readyListener: ReadyListener,
+    private val jda: JDA,
     private val guildJoinListener: GuildJoinListener,
     private val guildLeaveListener: GuildLeaveListener,
     private val guildUpdateNameListener: GuildUpdateNameListener,
+    private val guildVoiceUpdateNameListener: GuildVoiceUpdateListener,
 ) {
     init {
         this.connectDatabase()
-    }
 
-    fun start() {
-        val jda: JDA = JDABuilder.createDefault(this.config.discordbot.token)
-                                 .enableIntents(GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_VOICE_STATES)
-                                 .addEventListeners(
-                                     readyListener,
-                                     guildJoinListener,
-                                     guildLeaveListener,
-                                     guildUpdateNameListener,
-                                 )
-                                 .build()
+        this.jda.addEventListener(
+            this.guildJoinListener,
+            this.guildLeaveListener,
+            this.guildUpdateNameListener,
+            this.guildVoiceUpdateNameListener,
+        )
+        this.jda.awaitReady()
     }
 
     private fun connectDatabase() {

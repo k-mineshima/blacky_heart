@@ -5,6 +5,8 @@ import com.fionn.blacky_heart.core.domain.entities.Guild
 interface GuildRepository {
     fun all(): List<Guild>
 
+    fun getByGuildId(guildId: Long): Guild?
+
     fun save(guild: Guild)
 
     fun save(guilds: List<Guild>)
