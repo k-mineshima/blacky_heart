@@ -15,13 +15,13 @@ class DiscordMessageClient(
     override fun send(guildId: Long, channelId: Long, message: String) {
         val guild: Guild =
             this.jda.getGuildById(guildId) ?: let {
-                logger.error("failed to send text message. guild is not found. guildId = $guildId")
+                logger.error("failed to send text message. guild not found. guildId = $guildId")
                 return
             }
 
         val channel: TextChannel =
             guild.getTextChannelById(channelId) ?: let {
-                logger.error("failed to send text message. channel is not found. channelId = '$channelId'")
+                logger.error("failed to send text message. channel not found. channelId = '$channelId'")
                 return
             }
 

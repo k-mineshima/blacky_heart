@@ -12,8 +12,6 @@ import org.jetbrains.exposed.v1.jdbc.Database
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-private val logger: Logger = LoggerFactory.getLogger(BlackyHeart::class.java)
-
 class BlackyHeart(
     private val config: Configuration,
     private val jda: JDA,
